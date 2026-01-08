@@ -1,0 +1,54 @@
+Here you will find a small INTCODE interpreter written in C. The code not only compiles using CC65 (C64),
+but also with GCC, Laser C (ATARI ST), Megamax C (ATARI ST), Pure C (ATARI ST) and Sozobon C (Atari ST).
+
+Which means, it should compile on just about anything. Unlike other icint's, this one includes
+all of ICLIB and BLIB inside the interpreter, so, you don't need to include extra INTCODE.
+
+There are a lot of things that can be done to improve this system including:
+
+1) Reducing the size of the BCPL compile by ripping out code.
+2) Outputting OCODE as numbers which then are read back into cgi.
+3) Using more of the native functions in BLIB.
+4) Storing binary versions of trni, syni and cgi on disk, instead of loading INTCODE.
+5) Joining trni and syni into one file.
+6) Providing a console interface for compiling bcpl programs.
+
+To compile icint.c using cc64 use:
+cl65 -O icint.c
+
+I've included the text editor from Kyan Pascal Pro, so to edit bcpl files use:
+LOAD "ED",8
+RUN
+and enter the file name TEST.B
+
+To compile BCPL to OCODE use:
+
+LOAD "ICINT",8
+RUN
+ICFILE=syni
+ICFILE=trni
+ICFILE=<enter>
+INPUT=test.b
+OUTPUT=<enter>
+
+To compile OCODE to INTCODE use:
+
+LOAD "ICINT",8
+RUN
+ICFILE=cgi
+ICFILE=<enter>
+INPUT=ocode
+OUTPUT=<enter>
+
+To execute the resulting INTCODE use:
+
+LOAD "ICINT",8
+RUN
+ICFILE=INTCODE
+ICFILE=<enter>
+INPUT=<enter>
+OUTPUT=<enter>
+Hello there BCPL fans!
+
+You can also compile the original BCPL KIT sources on the C64.
+

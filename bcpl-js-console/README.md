@@ -3,6 +3,8 @@
 This is a JavaScript port of the BCPL INTCODE interpreter (`icint.c`).
 It allows compiling and running BCPL programs in a Node.js environment.
 
+It is ported from https://sourceforge.net/projects/bcpl-c64/
+
 ## Files
 
 - `icint.js`: The main interpreter and assembler (ported from `icint.c`).

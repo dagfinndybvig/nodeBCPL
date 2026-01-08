@@ -1,4 +1,4 @@
-From the C version that is now ported to Node.js:
+---- From the C version that is now ported to Node.js: ----
 
 Here you will find a small INTCODE interpreter written in C. The code not only compiles using CC65 (C64),
 but also with GCC, Laser C (ATARI ST), Megamax C (ATARI ST), Pure C (ATARI ST) and Sozobon C (Atari ST).
@@ -53,5 +53,6 @@ OUTPUT=<enter>
 Hello there BCPL fans!
 
 You can also compile the original BCPL KIT sources on the C64.
+
 
 

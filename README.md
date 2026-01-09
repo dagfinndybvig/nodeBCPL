@@ -1,3 +1,6 @@
+
+![bcplbook_](https://github.com/user-attachments/assets/f41a992b-e09a-4a7d-b0b5-c7209550ceac)
+
 # BCPL JS Console
 
 This is a JavaScript port of the BCPL INTCODE interpreter (`icint.c`).

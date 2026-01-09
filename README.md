@@ -71,3 +71,75 @@ Use the `compile.sh` script to compile and run a BCPL program:
 - The interpreter uses 16-bit signed arithmetic to match the original C implementation.
 - `syni` and `trni` are concatenated to share the label namespace (or rather, to avoid clearing labels between passes, although they mostly use globals).
 - `trni` writes directly to a file named `OCODE` (ignoring standard output redirection for the code itself).
+
+## Contributing
+
+If you have cloned this repository to a peripheral computer and made additions, here's how to push them back to the central repository:
+
+### For Direct Contributors (with write access)
+
+1. **Check the status of your changes:**
+   ```bash
+   git status
+   ```
+
+2. **Add your changes to the staging area:**
+   ```bash
+   git add .
+   # Or add specific files:
+   git add path/to/file1 path/to/file2
+   ```
+
+3. **Commit your changes with a descriptive message:**
+   ```bash
+   git commit -m "Description of your changes"
+   ```
+
+4. **Push your changes to the central repository:**
+   ```bash
+   git push origin main
+   # Or if you're on a different branch:
+   git push origin your-branch-name
+   ```
+
+### For External Contributors (without write access)
+
+1. **Fork the repository** on GitHub (click the "Fork" button on the repository page).
+
+2. **Add your fork as a remote** (if not already done):
+   ```bash
+   git remote add fork https://github.com/YOUR_USERNAME/nodeBCPL.git
+   ```
+
+3. **Create a new branch for your changes:**
+   ```bash
+   git checkout -b my-feature-branch
+   ```
+
+4. **Add and commit your changes:**
+   ```bash
+   git add .
+   git commit -m "Description of your changes"
+   ```
+
+5. **Push to your fork:**
+   ```bash
+   git push fork my-feature-branch
+   ```
+
+6. **Create a Pull Request** on GitHub:
+   - Go to the original repository on GitHub
+   - Click "New Pull Request"
+   - Select your fork and branch
+   - Provide a clear description of your changes
+   - Submit the pull request
+
+### Before Pushing
+
+Always ensure your local repository is up to date with the central repository:
+
+```bash
+git pull origin main
+```
+
+This helps avoid merge conflicts and ensures your changes are based on the latest code.

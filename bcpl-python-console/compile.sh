@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # BCPL Compiler Script (Python version)
 # Compiles and runs a BCPL program using the Python INTCODE interpreter
@@ -7,6 +8,18 @@
 #   PYTHON=pypy3 ./compile.sh test.b
 
 PYTHON=${PYTHON:-python3}
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <source.b>"
+    echo "Example: $0 test.b"
+    echo "For better performance: PYTHON=pypy3 $0 test.b"
+    exit 1
+fi
+
+if [ ! -f "$1" ]; then
+    echo "Error: Source file '$1' not found"
+    exit 1
+fi
 
 # Concatenate syni and trni (stripping Z from trni)
 cat syni > synitrni

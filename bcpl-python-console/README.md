@@ -101,7 +101,8 @@ Use the `compile.sh` script to compile and run a BCPL program:
 ## Differences from Node.js Version
 
 This Python port is functionally equivalent to the Node.js version (`icint.js`) with the following implementation details:
-- Uses Python's `bytearray` for memory instead of `ArrayBuffer`/`Int16Array`
+- Uses a plain Python list for memory instead of `ArrayBuffer`/`Int16Array`
+- 16-bit signed values are emulated by masking and sign-extending as needed
 - Uses standard Python file I/O instead of Node.js `fs` module
 - All 16-bit signed/unsigned arithmetic is carefully emulated
 

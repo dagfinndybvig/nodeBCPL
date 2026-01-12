@@ -134,23 +134,24 @@ BYTESPERWORD = 2
 # Memory - Using a list for fast access (Python lists are faster than array.array)
 # ============================================================================
 
-# Use a plain Python list - stored as integers, handle sign ourselves
+# Use a plain Python list - values stored as Python integers,
+# converted to 16-bit signed values when needed for INTCODE semantics
 m = [0] * WORDCOUNT
 
 def _get_byte(byte_idx):
     """Get a byte from memory (little-endian)."""
-    word_idx = byte_idx >> 1  # // 2
+    word_idx = byte_idx >> 1
     val = m[word_idx] & 0xFFFF
-    if byte_idx & 1:  # % 2 == 1
+    if byte_idx & 1:
         return (val >> 8) & 0xFF
     return val & 0xFF
 
 def _set_byte(byte_idx, val):
     """Set a byte in memory (little-endian)."""
-    word_idx = byte_idx >> 1  # // 2
+    word_idx = byte_idx >> 1
     current = m[word_idx] & 0xFFFF
     val = val & 0xFF
-    if byte_idx & 1:  # % 2 == 1
+    if byte_idx & 1:
         new_val = (current & 0x00FF) | (val << 8)
     else:
         new_val = (current & 0xFF00) | val
@@ -515,14 +516,7 @@ def halt(msg, n=None):
         sys.stderr.write(f"{msg} #{n}\n")
     else:
         sys.stderr.write(f"{msg}\n")
-    sys.exit(-1)
-
-def to_signed_16(val):
-    """Convert value to signed 16-bit."""
-    val = val & 0xFFFF
-    if val >= 0x8000:
-        val -= 0x10000
-    return val
+    sys.exit(1)
 
 def assemble():
     """Assemble INTCODE from the current input stream."""
@@ -649,7 +643,6 @@ def interpret():
     
     # Cache globals locally for faster access
     _m = m
-    _file_handles = globals()['_file_handles']
     
     # Cache constants locally
     _PROGSTART = PROGSTART
@@ -663,7 +656,7 @@ def interpret():
     a = 0
     b = 0
     
-    # Inline to_signed_16
+    # Helper function to convert to signed 16-bit (inline for performance)
     def _s16(val):
         val = val & 0xFFFF
         return val - 0x10000 if val >= 0x8000 else val

@@ -1,0 +1,7 @@
+
+GET "LIBHDR"
+
+LET START() BE $(
+ WRITES("HELLO THERE BCPL RICHARDS FANS!*N")
+ WRITES("Thanks to Gemini*N")
+$)
